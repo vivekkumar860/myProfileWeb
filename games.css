@@ -2,11 +2,7 @@
    GAMES SECTION STYLES
    ============================================================ */
 
-/* Games Section */
-.games {
-    background: #f8fafc;
-}
-
+/* Games Section — background handled by alternating sections in styles.css */
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -69,7 +65,7 @@
 }
 
 /* ============================================================
-   GAME MODAL OVERLAY
+   GAME MODAL OVERLAY — Light theme to match site palette
    ============================================================ */
 .game-modal {
     display: none;
@@ -78,7 +74,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 10000;
     align-items: center;
     justify-content: center;
@@ -90,7 +86,7 @@
 }
 
 .game-modal-content {
-    background: #1a1a2e;
+    background: #ffffff;
     border-radius: 16px;
     padding: 2rem;
     position: relative;
@@ -98,15 +94,15 @@
     width: 95%;
     max-height: 95vh;
     overflow-y: auto;
-    color: #e0e0e0;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    color: #333;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .game-modal-content h3 {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #FCD34D;
+    color: #4F46E5;
 }
 
 .game-modal-close {
@@ -115,7 +111,7 @@
     right: 16px;
     background: none;
     border: none;
-    color: #aaa;
+    color: #999;
     font-size: 2rem;
     cursor: pointer;
     line-height: 1;
@@ -124,7 +120,7 @@
 }
 
 .game-modal-close:hover {
-    color: #fff;
+    color: #333;
 }
 
 .game-info-bar {
@@ -138,7 +134,8 @@
 }
 
 .game-info-bar span {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f1f5f9;
+    color: #333;
     padding: 6px 14px;
     border-radius: 8px;
     font-weight: 600;
@@ -164,19 +161,19 @@
 }
 
 /* ============================================================
-   SNAKE GAME
+   SNAKE GAME — canvas stays dark (self-contained)
    ============================================================ */
 #snake-canvas {
     display: block;
     margin: 0 auto;
     background: #0f0f23;
     border-radius: 8px;
-    border: 2px solid #333;
+    border: 2px solid #e5e7eb;
     max-width: 100%;
 }
 
 /* ============================================================
-   TIC-TAC-TOE
+   TIC-TAC-TOE — light theme
    ============================================================ */
 .ttt-board {
     display: grid;
@@ -188,8 +185,8 @@
 
 .ttt-cell {
     aspect-ratio: 1;
-    background: rgba(255, 255, 255, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: #f1f5f9;
+    border: 2px solid #e5e7eb;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -198,26 +195,26 @@
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
-    color: #e0e0e0;
+    color: #333;
     user-select: none;
 }
 
 .ttt-cell:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #e0e7ff;
     transform: scale(1.05);
 }
 
 .ttt-cell.x {
-    color: #60a5fa;
+    color: #4F46E5;
 }
 
 .ttt-cell.o {
-    color: #f472b6;
+    color: #EC4899;
 }
 
 .ttt-cell.winner {
-    background: rgba(252, 211, 77, 0.25);
-    border-color: #FCD34D;
+    background: rgba(252, 211, 77, 0.3);
+    border-color: #F59E0B;
 }
 
 .ttt-status {
@@ -226,10 +223,11 @@
     margin-bottom: 0.75rem;
     min-height: 1.5rem;
     font-weight: 600;
+    color: #333;
 }
 
 /* ============================================================
-   MEMORY CARD GAME
+   MEMORY CARD GAME — light theme
    ============================================================ */
 .memory-board {
     display: grid;
@@ -277,8 +275,8 @@
 }
 
 .memory-card-back {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: #f1f5f9;
+    border: 2px solid #e5e7eb;
     transform: rotateY(180deg);
 }
 
@@ -287,12 +285,12 @@
 }
 
 .memory-card.matched .memory-card-back {
-    background: rgba(16, 185, 129, 0.2);
+    background: rgba(16, 185, 129, 0.15);
     border-color: #10b981;
 }
 
 /* ============================================================
-   2048 GAME
+   2048 GAME — light theme
    ============================================================ */
 .game-2048-board {
     display: grid;
@@ -300,7 +298,7 @@
     gap: 8px;
     max-width: 340px;
     margin: 0 auto 1rem;
-    background: rgba(255, 255, 255, 0.06);
+    background: #e5e7eb;
     padding: 10px;
     border-radius: 12px;
 }
@@ -313,8 +311,8 @@
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.05);
-    color: #e0e0e0;
+    background: #f1f5f9;
+    color: #333;
     transition: all 0.15s ease;
     user-select: none;
 }
@@ -342,7 +340,7 @@
 }
 
 /* ============================================================
-   WHACK-A-MOLE
+   WHACK-A-MOLE — light theme
    ============================================================ */
 .wam-board {
     display: grid;
@@ -354,9 +352,9 @@
 
 .wam-hole {
     aspect-ratio: 1;
-    background: rgba(255, 255, 255, 0.06);
+    background: #f1f5f9;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.12);
+    border: 3px solid #e5e7eb;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -369,11 +367,11 @@
 }
 
 .wam-hole:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #e0e7ff;
 }
 
 .wam-hole.mole-up {
-    background: rgba(139, 69, 19, 0.3);
+    background: rgba(139, 69, 19, 0.15);
     border-color: #a0522d;
     animation: moleShake 0.3s ease;
 }
@@ -409,7 +407,7 @@
 }
 
 /* ============================================================
-   GAME OVER / WIN OVERLAY
+   GAME OVER / WIN OVERLAY — light with blur
    ============================================================ */
 .game-overlay-msg {
     position: absolute;
@@ -417,7 +415,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(6px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -436,13 +435,13 @@
 
 .game-overlay-msg h4 {
     font-size: 1.8rem;
-    color: #FCD34D;
+    color: #4F46E5;
     margin-bottom: 0.5rem;
 }
 
 .game-overlay-msg p {
     font-size: 1.1rem;
-    color: #ccc;
+    color: #555;
     margin-bottom: 1rem;
 }
 

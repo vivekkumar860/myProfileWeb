@@ -65,17 +65,28 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+// Hamburger keyboard support (Enter / Space)
+hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    }
+});
+
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
 }));
 
-// Smooth scrolling for navigation links
+// Smooth scrolling for navigation links (with guard against href="#")
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return; // guard against bare "#"
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -171,25 +182,45 @@ function updateActiveNavLink() {
 
 window.addEventListener('scroll', updateActiveNavLink);
 
-// Form submission handling
-const contactForm = document.querySelector('.contact-form form');
+// ============================================================
+// EmailJS Contact Form
+// ============================================================
+// To enable real email sending:
+// 1. Create a free account at https://www.emailjs.com/
+// 2. Replace the three values below with your own credentials
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';   // <-- REPLACE with your EmailJS public key
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';   // <-- REPLACE with your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // <-- REPLACE with your EmailJS template ID
+
+function showFormStatus(message, type) {
+    const statusEl = document.getElementById('form-status');
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.className = 'form-status ' + type;
+    setTimeout(() => {
+        statusEl.textContent = '';
+        statusEl.className = 'form-status';
+    }, 5000);
+}
+
+const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const subject = this.querySelector('input[placeholder="Subject"]').value;
-        const message = this.querySelector('textarea').value;
+        const name = this.querySelector('input[name="from_name"]').value;
+        const email = this.querySelector('input[name="from_email"]').value;
+        const subject = this.querySelector('input[name="subject"]').value;
+        const message = this.querySelector('textarea[name="message"]').value;
 
         if (!name || !email || !subject || !message) {
-            alert('Please fill in all fields');
+            showFormStatus('Please fill in all fields.', 'error');
             return;
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address');
+            showFormStatus('Please enter a valid email address.', 'error');
             return;
         }
 
@@ -198,12 +229,28 @@ if (contactForm) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        setTimeout(() => {
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
+        // Check if EmailJS SDK loaded
+        if (typeof emailjs === 'undefined') {
+            showFormStatus('Email service is unavailable. Please email me directly at vivekkumarorigional@gmail.com', 'error');
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-        }, 2000);
+            return;
+        }
+
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+            .then(function() {
+                showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+            })
+            .catch(function(err) {
+                console.error('EmailJS error:', err);
+                showFormStatus('Failed to send. Please email me directly at vivekkumarorigional@gmail.com', 'error');
+            })
+            .finally(function() {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
     });
 }
 

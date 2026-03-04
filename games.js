@@ -8,17 +8,25 @@
 (function() {
     const gameInstances = {};
 
+    // Single consolidated click listener for play, close, and backdrop
     document.addEventListener('click', function(e) {
         const playBtn = e.target.closest('.game-play-btn');
         if (playBtn) {
             const gameId = playBtn.dataset.game;
             openGameModal(gameId);
+            return;
         }
 
         const closeBtn = e.target.closest('.game-modal-close');
         if (closeBtn) {
             const modal = closeBtn.closest('.game-modal');
             closeGameModal(modal);
+            return;
+        }
+
+        // Backdrop click
+        if (e.target.classList.contains('game-modal')) {
+            closeGameModal(e.target);
         }
     });
 
@@ -46,6 +54,21 @@
             gameInstances[gameId].destroy();
         }
         gameInstances[gameId] = null;
+        // Remove any overlay messages
+        const overlay = modal.querySelector('.game-overlay-msg');
+        if (overlay) overlay.remove();
+    }
+
+    // Shared helper: show in-game overlay instead of alert()
+    function showGameOverlay(modal, title, text) {
+        // Remove existing overlay if any
+        const existing = modal.querySelector('.game-overlay-msg');
+        if (existing) existing.remove();
+
+        const overlay = document.createElement('div');
+        overlay.className = 'game-overlay-msg show';
+        overlay.innerHTML = '<h4>' + title + '</h4><p>' + text + '</p>';
+        modal.querySelector('.game-modal-content').appendChild(overlay);
     }
 
     function initGame(gameId) {
@@ -60,13 +83,6 @@
             case 'whackamole': gameInstances[gameId] = new WhackAMole(); break;
         }
     }
-
-    // Close modal on backdrop click
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('game-modal')) {
-            closeGameModal(e.target);
-        }
-    });
 
 
 // ============================================================
@@ -88,6 +104,7 @@ class SnakeGame {
 
         this._onKey = this.handleKey.bind(this);
         this._onRestart = this.restart.bind(this);
+        this._boundLoop = this.loop.bind(this); // store once, avoid per-frame .bind()
         document.addEventListener('keydown', this._onKey);
         this.restartBtn.addEventListener('click', this._onRestart);
 
@@ -148,7 +165,7 @@ class SnakeGame {
             this.update();
         }
         this.draw();
-        this.animFrame = requestAnimationFrame(this.loop.bind(this));
+        this.animFrame = requestAnimationFrame(this._boundLoop);
     }
 
     update() {
@@ -178,7 +195,8 @@ class SnakeGame {
             this.score++;
             this.scoreEl.textContent = this.score;
             this.food = this.spawnFood();
-            if (this.speed > 50) this.speed -= 2;
+            // Logarithmic speed curve instead of linear speed -= 2
+            this.speed = Math.max(70, 120 - Math.log(this.score + 1) * 12);
         } else {
             this.snake.pop();
         }
@@ -259,6 +277,7 @@ class TicTacToe {
         this.scores = { wins: 0, losses: 0, draws: 0 };
         this.playerTurn = true;
         this.gameActive = true;
+        this._aiTimeout = null;
 
         this._onClick = this.handleClick.bind(this);
         this._onRestart = this.restart.bind(this);
@@ -272,6 +291,7 @@ class TicTacToe {
         this.board = Array(9).fill(null);
         this.playerTurn = true;
         this.gameActive = true;
+        if (this._aiTimeout) { clearTimeout(this._aiTimeout); this._aiTimeout = null; }
         this.cells.forEach(c => {
             c.textContent = '';
             c.className = 'ttt-cell';
@@ -289,8 +309,10 @@ class TicTacToe {
 
         this.playerTurn = false;
         this.statusEl.textContent = 'AI thinking...';
-        setTimeout(() => {
+        this._aiTimeout = setTimeout(() => {
+            this._aiTimeout = null;
             const aiMove = this.getAIMove();
+            if (aiMove === undefined || aiMove === null) return; // defensive guard
             this.makeMove(aiMove, 'O');
             if (!this.checkEnd()) {
                 this.playerTurn = true;
@@ -356,6 +378,9 @@ class TicTacToe {
     }
 
     getAIMove() {
+        const empty = this.board.map((v, i) => v ? -1 : i).filter(i => i >= 0);
+        if (empty.length === 0) return undefined; // defensive guard for full board
+
         // Try to win
         for (let i = 0; i < 9; i++) {
             if (!this.board[i]) {
@@ -377,12 +402,12 @@ class TicTacToe {
         // Corners
         const corners = [0, 2, 6, 8].filter(i => !this.board[i]);
         if (corners.length) return corners[Math.floor(Math.random() * corners.length)];
-        // Random
-        const empty = this.board.map((v, i) => v ? -1 : i).filter(i => i >= 0);
+        // Random from remaining
         return empty[Math.floor(Math.random() * empty.length)];
     }
 
     destroy() {
+        if (this._aiTimeout) { clearTimeout(this._aiTimeout); this._aiTimeout = null; }
         this.cells.forEach(c => c.removeEventListener('click', this._onClick));
         this.restartBtn.removeEventListener('click', this._onRestart);
     }
@@ -408,7 +433,10 @@ class MemoryGame {
         this.started = false;
 
         this._onRestart = this.restart.bind(this);
+        // Event delegation on board instead of per-card listeners
+        this._onBoardClick = this.handleBoardClick.bind(this);
         this.restartBtn.addEventListener('click', this._onRestart);
+        this.boardEl.addEventListener('click', this._onBoardClick);
 
         this.restart();
     }
@@ -433,13 +461,10 @@ class MemoryGame {
             card.className = 'memory-card';
             card.dataset.emoji = emoji;
             card.dataset.index = idx;
-            card.innerHTML = `
-                <div class="memory-card-inner">
-                    <div class="memory-card-front">?</div>
-                    <div class="memory-card-back">${emoji}</div>
-                </div>
-            `;
-            card.addEventListener('click', () => this.flipCard(card));
+            card.innerHTML = '<div class="memory-card-inner">' +
+                '<div class="memory-card-front">?</div>' +
+                '<div class="memory-card-back">' + emoji + '</div>' +
+                '</div>';
             this.boardEl.appendChild(card);
         });
     }
@@ -451,6 +476,12 @@ class MemoryGame {
         }
     }
 
+    handleBoardClick(e) {
+        const card = e.target.closest('.memory-card');
+        if (!card) return;
+        this.flipCard(card);
+    }
+
     flipCard(card) {
         if (this.locked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
 
@@ -460,7 +491,7 @@ class MemoryGame {
                 this.seconds++;
                 const m = Math.floor(this.seconds / 60);
                 const s = this.seconds % 60;
-                this.timerEl.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+                this.timerEl.textContent = m + ':' + s.toString().padStart(2, '0');
             }, 1000);
         }
 
@@ -482,8 +513,9 @@ class MemoryGame {
 
                 if (this.matched === this.emojis.length) {
                     clearInterval(this.timerInterval);
+                    const modal = document.getElementById('memory-modal');
                     setTimeout(() => {
-                        alert(`You won in ${this.moves} moves and ${this.timerEl.textContent}!`);
+                        showGameOverlay(modal, 'You Won!', 'Completed in ' + this.moves + ' moves &amp; ' + this.timerEl.textContent);
                     }, 400);
                 }
             } else {
@@ -499,6 +531,7 @@ class MemoryGame {
 
     destroy() {
         clearInterval(this.timerInterval);
+        this.boardEl.removeEventListener('click', this._onBoardClick);
         this.restartBtn.removeEventListener('click', this._onRestart);
     }
 }
@@ -515,7 +548,13 @@ class Game2048 {
         this.restartBtn = document.getElementById('game2048-restart');
         this.size = 4;
         this.score = 0;
-        this.best = parseInt(localStorage.getItem('best2048') || '0');
+
+        // Wrap localStorage in try/catch
+        try {
+            this.best = parseInt(localStorage.getItem('best2048') || '0');
+        } catch (e) {
+            this.best = 0;
+        }
         this.bestEl.textContent = this.best;
 
         this._onKey = this.handleKey.bind(this);
@@ -538,6 +577,10 @@ class Game2048 {
         this.score = 0;
         this.scoreEl.textContent = '0';
         this.gameOver = false;
+        // Remove overlay if present
+        const modal = document.getElementById('game2048-modal');
+        const overlay = modal ? modal.querySelector('.game-overlay-msg') : null;
+        if (overlay) overlay.remove();
         this.addRandomTile();
         this.addRandomTile();
         this.render();
@@ -564,11 +607,14 @@ class Game2048 {
     }
 
     handleTouchStart(e) {
+        // Check modal is active before handling touch
+        if (!document.getElementById('game2048-modal').classList.contains('active')) return;
         this._touchStartX = e.touches[0].clientX;
         this._touchStartY = e.touches[0].clientY;
     }
 
     handleTouchEnd(e) {
+        if (!document.getElementById('game2048-modal').classList.contains('active')) return;
         if (this.gameOver) return;
         const dx = e.changedTouches[0].clientX - this._touchStartX;
         const dy = e.changedTouches[0].clientY - this._touchStartY;
@@ -593,7 +639,10 @@ class Game2048 {
             this.render();
             if (!this.canMove()) {
                 this.gameOver = true;
-                setTimeout(() => alert('Game Over! Score: ' + this.score), 200);
+                const modal = document.getElementById('game2048-modal');
+                setTimeout(() => {
+                    showGameOverlay(modal, 'Game Over!', 'Final Score: ' + this.score);
+                }, 200);
             }
         }
     }
@@ -651,7 +700,9 @@ class Game2048 {
         if (this.score > this.best) {
             this.best = this.score;
             this.bestEl.textContent = this.best;
-            localStorage.setItem('best2048', this.best);
+            try {
+                localStorage.setItem('best2048', this.best);
+            } catch (e) { /* storage full or blocked */ }
         }
 
         this.boardEl.innerHTML = '';
@@ -691,6 +742,7 @@ class WhackAMole {
         this.timeLeft = 30;
         this.gameActive = false;
         this.moleTimeout = null;
+        this._whackTimeout = null;
         this.timerInterval = null;
         this.currentMole = null;
         this.difficulty = 1;
@@ -769,7 +821,8 @@ class WhackAMole {
             hole.textContent = '💥';
 
             clearTimeout(this.moleTimeout);
-            setTimeout(() => {
+            this._whackTimeout = setTimeout(() => {
+                this._whackTimeout = null;
                 hole.classList.remove('whacked');
                 hole.textContent = '';
                 this.showMole();
@@ -780,6 +833,7 @@ class WhackAMole {
     endGame() {
         this.gameActive = false;
         clearTimeout(this.moleTimeout);
+        clearTimeout(this._whackTimeout);
         clearInterval(this.timerInterval);
         this.holes.forEach(h => {
             h.classList.remove('mole-up');
@@ -788,12 +842,16 @@ class WhackAMole {
         this.startBtn.disabled = false;
         this.startBtn.textContent = 'Play Again';
         this.timerEl.textContent = '0';
-        setTimeout(() => alert('Time\'s up! Your score: ' + this.score), 200);
+        const modal = document.getElementById('whackamole-modal');
+        setTimeout(() => {
+            showGameOverlay(modal, "Time's Up!", 'Your score: ' + this.score);
+        }, 200);
     }
 
     destroy() {
         this.gameActive = false;
         clearTimeout(this.moleTimeout);
+        clearTimeout(this._whackTimeout);
         clearInterval(this.timerInterval);
         this.startBtn.removeEventListener('click', this._onStart);
         this.holes.forEach(h => h.removeEventListener('click', this._onHoleClick));
