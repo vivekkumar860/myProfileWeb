@@ -21,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="games.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -41,6 +42,7 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#games" class="nav-link">Games</a></li>
                 <li><a href="#certificates" class="nav-link">Certificates</a></li>
                 <li><a href="#achievements" class="nav-link">Achievements</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -259,6 +261,140 @@
         </div>
     </section>
 
+    <!-- Games Section -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2 class="section-title">Play Some Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <span class="game-card-icon">🐍</span>
+                    <h3>Snake</h3>
+                    <p>Classic arcade — eat, grow, survive!</p>
+                    <button class="game-play-btn" data-game="snake">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">❌</span>
+                    <h3>Tic-Tac-Toe</h3>
+                    <p>Challenge the AI in this classic.</p>
+                    <button class="game-play-btn" data-game="tictactoe">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">🃏</span>
+                    <h3>Memory Match</h3>
+                    <p>Flip cards and find all pairs.</p>
+                    <button class="game-play-btn" data-game="memory">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">🔢</span>
+                    <h3>2048</h3>
+                    <p>Merge tiles to reach 2048!</p>
+                    <button class="game-play-btn" data-game="game2048">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">🔨</span>
+                    <h3>Whack-a-Mole</h3>
+                    <p>Whack moles before time runs out!</p>
+                    <button class="game-play-btn" data-game="whackamole">Play</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modals -->
+
+    <!-- Snake Modal -->
+    <div class="game-modal" id="snake-modal">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Snake</h3>
+            <div class="game-info-bar">
+                <span>Score: <strong id="snake-score">0</strong></span>
+            </div>
+            <canvas id="snake-canvas" width="400" height="400"></canvas>
+            <button class="game-restart-btn" id="snake-restart">Restart</button>
+            <p style="text-align:center;margin-top:0.75rem;font-size:0.85rem;color:#888;">Use arrow keys to move</p>
+        </div>
+    </div>
+
+    <!-- Tic-Tac-Toe Modal -->
+    <div class="game-modal" id="tictactoe-modal">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Tic-Tac-Toe</h3>
+            <div class="ttt-status" id="ttt-status">Your turn (X)</div>
+            <div class="ttt-board">
+                <div class="ttt-cell" data-index="0"></div>
+                <div class="ttt-cell" data-index="1"></div>
+                <div class="ttt-cell" data-index="2"></div>
+                <div class="ttt-cell" data-index="3"></div>
+                <div class="ttt-cell" data-index="4"></div>
+                <div class="ttt-cell" data-index="5"></div>
+                <div class="ttt-cell" data-index="6"></div>
+                <div class="ttt-cell" data-index="7"></div>
+                <div class="ttt-cell" data-index="8"></div>
+            </div>
+            <div class="game-info-bar">
+                <span>Wins: <strong id="ttt-wins">0</strong></span>
+                <span>Losses: <strong id="ttt-losses">0</strong></span>
+                <span>Draws: <strong id="ttt-draws">0</strong></span>
+            </div>
+            <button class="game-restart-btn" id="ttt-restart">New Game</button>
+        </div>
+    </div>
+
+    <!-- Memory Match Modal -->
+    <div class="game-modal" id="memory-modal">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Memory Match</h3>
+            <div class="game-info-bar">
+                <span>Moves: <strong id="memory-moves">0</strong></span>
+                <span>Time: <strong id="memory-timer">0:00</strong></span>
+            </div>
+            <div class="memory-board" id="memory-board"></div>
+            <button class="game-restart-btn" id="memory-restart">Restart</button>
+        </div>
+    </div>
+
+    <!-- 2048 Modal -->
+    <div class="game-modal" id="game2048-modal">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>2048</h3>
+            <div class="game-info-bar">
+                <span>Score: <strong id="game2048-score">0</strong></span>
+                <span>Best: <strong id="game2048-best">0</strong></span>
+            </div>
+            <div class="game-2048-board" id="game2048-board"></div>
+            <button class="game-restart-btn" id="game2048-restart">Restart</button>
+            <p style="text-align:center;margin-top:0.75rem;font-size:0.85rem;color:#888;">Use arrow keys or swipe to play</p>
+        </div>
+    </div>
+
+    <!-- Whack-a-Mole Modal -->
+    <div class="game-modal" id="whackamole-modal">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Whack-a-Mole</h3>
+            <div class="game-info-bar">
+                <span>Score: <strong id="wam-score">0</strong></span>
+                <span>Time: <strong id="wam-timer">30</strong>s</span>
+            </div>
+            <div class="wam-board">
+                <div class="wam-hole" data-index="0"></div>
+                <div class="wam-hole" data-index="1"></div>
+                <div class="wam-hole" data-index="2"></div>
+                <div class="wam-hole" data-index="3"></div>
+                <div class="wam-hole" data-index="4"></div>
+                <div class="wam-hole" data-index="5"></div>
+                <div class="wam-hole" data-index="6"></div>
+                <div class="wam-hole" data-index="7"></div>
+                <div class="wam-hole" data-index="8"></div>
+            </div>
+            <button class="wam-start-btn" id="wam-start">Start Game</button>
+        </div>
+    </div>
+
     <!-- Certificates Section -->
     <section id="certificates" class="certificates">
         <div class="container">
@@ -412,5 +548,6 @@
     </button>
 
     <script src="script.js"></script>
+    <script src="games.js"></script>
 </body>
 </html>
