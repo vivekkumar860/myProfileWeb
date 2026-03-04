@@ -2,14 +2,14 @@
 // CONFIGURABLE ROLES - Edit this array to change cycling titles
 // ============================================================
 const professionalRoles = [
+    "AI & ML Engineer",
     "Full Stack Developer",
-    "UI/UX Designer",
-    "Problem Solver",
-    "Frontend Engineer",
-    "Backend Developer",
-    "Creative Thinker",
-    "Tech Enthusiast",
-    "Open Source Contributor"
+    "Cybersecurity Enthusiast",
+    "Python Developer",
+    "React.js Developer",
+    "IoT & Hardware Tinkerer",
+    "Cloud Computing Learner",
+    "Problem Solver"
 ];
 // ============================================================
 
