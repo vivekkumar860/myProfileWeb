@@ -1,0 +1,312 @@
+{
+  "profile": {
+    "name": "Vivek Kumar",
+    "headline": "AI and ML Engineer | Intern IT Recruiter",
+    "role_target": "Full Stack Developer",
+    "location": "Law Gate, LPU, Phagwara, Punjab 144411, India",
+    "contact": {
+      "phone": "+91 8604227399",
+      "email": "vivekkumarorigional@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/vivekkumar021",
+      "github": "https://github.com/vivekkumar860"
+    }
+  },
+
+  "objective": "To secure a challenging role as a Full Stack Developer in a reputed organization where I can utilize my skills in Python, React.js, cloud computing (AWS and Google Cloud), and machine learning frameworks like TensorFlow and OpenCV, contribute to impactful projects such as real-time applications and predictive systems, and grow as a professional while achieving organizational goals.",
+
+  "education": [
+    {
+      "institution": "Lovely Professional University",
+      "location": "Jalandhar, Punjab",
+      "degree": "Bachelor of Technology - BTech, Artificial Intelligence and Machine Learning",
+      "cgpa": 8.0,
+      "start_year": 2023,
+      "end_year": 2027,
+      "activities": ["Coding Club", "Anime Club"],
+      "relevant_coursework": [
+        "Data Structures and Algorithms",
+        "Operating Systems",
+        "Database Management Systems",
+        "Artificial Intelligence",
+        "Computer Networks",
+        "Software Engineering"
+      ]
+    },
+    {
+      "institution": "RPM Academy",
+      "location": "Gorakhpur, Uttar Pradesh",
+      "degree": "Senior Secondary School Certificate (12th Grade)",
+      "percentage": 89.5,
+      "year": 2022,
+      "subjects": ["Physics", "Chemistry", "Mathematics", "Computer Science"]
+    },
+    {
+      "institution": "RPM Academy",
+      "location": "Gorakhpur, Uttar Pradesh",
+      "degree": "Secondary School Certificate (10th Grade)",
+      "percentage": 92.0,
+      "year": 2020,
+      "achievements": ["School Topper", "1st Rank in Mathematics"]
+    }
+  ],
+
+  "experience": [
+    {
+      "title": "Talent Acquisition Coordinator",
+      "company": "Placify.ai",
+      "type": "Internship",
+      "started": "2024",
+      "description": "Working in IT recruiting and talent acquisition using AI-powered recruitment tools."
+    }
+  ],
+
+  "technical_skills": {
+    "programming_languages": ["Python", "Java", "Core Java", "C", "C++", "JavaScript"],
+    "web": ["HTML", "CSS", "React.js", "Flask", "Responsive Web Design"],
+    "frameworks_libraries": ["TensorFlow", "OpenCV", "Pandas", "Seaborn", "NumPy", "face_recognition"],
+    "tools_technologies": ["Git", "Docker", "Kubernetes", "SVG Graphics", "ESP32/Arduino"],
+    "databases": ["MySQL", "MongoDB", "JDBC", "DBMS"],
+    "cloud": ["AWS", "Google Cloud", "Firebase"],
+    "networking": ["Computer Networking", "Network Architecture", "Network Security", "TCP/IP", "VPNs", "Firewall Setup"],
+    "cybersecurity": ["Ethical Hacking", "Kali Linux", "Metasploit", "Cryptography", "OWASP Top 10", "SQL Injection", "DoS Simulation", "RBAC"],
+    "iot_hardware": ["Raspberry Pi 5", "ESP32", "Arduino", "RC Systems"],
+    "soft_skills": ["HR", "Technical Recruiting", "AI for Recruiting", "AI for Career Development", "Active Sourcing", "Critical Thinking", "Interpersonal Communication", "Human Computer Interaction"],
+    "other": ["Operating Systems", "SDLC", "Software Project Management", "Software Development", "Graphic Design", "Front-End Development", "Cloud Computing"],
+    "operating_systems": ["Linux", "Windows"]
+  },
+
+  "projects": [
+    {
+      "title": "Melbourne Property Price Predictor",
+      "description": "Developed a Real-Time Property Price Predictor for Melbourne City.",
+      "technologies": ["Python", "Flask", "API Integration", "HTML", "CSS"],
+      "impact": "Enables instant property price estimation with an accessible, interactive interface.",
+      "links": {
+        "github": "https://tinyurl.com/passCracker1"
+      }
+    },
+    {
+      "title": "Real-Time Face Recognition Attendance System",
+      "description": "Created a real-time face detection system that captures live video from a webcam and identifies faces instantly using computer vision. Encoded known faces using NumPy arrays, compared encodings to mark attendance, and built a script to register new faces dynamically.",
+      "technologies": ["Python", "OpenCV", "face_recognition", "NumPy", "React.js", "Firebase", "Node.js"],
+      "key_learnings": [
+        "Face detection vs face recognition",
+        "128-d vector face encodings",
+        "OpenCV for image processing",
+        "Real-time performance tuning",
+        "Distance thresholds for false positive prevention"
+      ],
+      "impact": "Automates attendance tracking with accurate, real-time face recognition and dynamic user addition.",
+      "links": {
+        "github": "https://lnkd.in/gy76uCK5",
+        "linkedin_demo": "https://www.linkedin.com/posts/vivekkumar021_facerecognition-opencv-python-activity-7312973364803903488-fD5y"
+      }
+    },
+    {
+      "title": "Wi-Fi Controlled LEDs with ESP32",
+      "description": "Built two IoT projects using ESP32 — a simple Wi-Fi controlled single LED and an advanced multi-LED system with custom blink intervals, both controlled via a web interface in real time.",
+      "technologies": ["ESP32", "Arduino", "IoT", "Web Interface"]
+    },
+    {
+      "title": "B.Tech CSE AI/ML Curriculum Webpage",
+      "description": "Dynamic webpage for the B.Tech CSE AI and ML curriculum with interactive subject details, responsive design, and CSS animations.",
+      "technologies": ["HTML", "CSS", "JavaScript"],
+      "links": {
+        "github": "https://lnkd.in/gsmtTh4g"
+      }
+    },
+    {
+      "title": "1986 Argentina World Cup Football Team Card Display",
+      "description": "Dynamic football team card display using advanced JavaScript — DOM manipulation, object destructuring, ES6+ features like map() and Object.freeze(), and position-based filtering.",
+      "technologies": ["JavaScript", "HTML", "CSS"],
+      "links": {
+        "github": "https://lnkd.in/gEVBayak"
+      }
+    },
+    {
+      "title": "E-Waste Management Web Platform",
+      "description": "Web platform for e-waste awareness using semantic HTML5, CSS3, and JavaScript interactivity to educate users on responsible recycling.",
+      "technologies": ["HTML5", "CSS3", "JavaScript"],
+      "links": {
+        "github": "https://lnkd.in/gS7__dyn"
+      }
+    },
+    {
+      "title": "Calorie Counter",
+      "description": "Interactive calorie counter with form validation, dynamic UI updates. Learned regular expressions, template literals, and addEventListener().",
+      "technologies": ["JavaScript", "HTML", "CSS"],
+      "links": {
+        "github": "https://lnkd.in/gKJrhSCD"
+      }
+    },
+    {
+      "title": "Role Playing Game",
+      "description": "Browser-based RPG with Store, Cave, and Fight Dragon actions, XP/Health/Gold bars. Covered arrays, objects, functions, loops, and conditionals in JavaScript.",
+      "technologies": ["HTML", "CSS", "JavaScript"],
+      "links": {
+        "github": "https://lnkd.in/gWNS4NUh"
+      }
+    },
+    {
+      "title": "Data Formatter",
+      "description": "Project focused on data objects and SVG graphics, including the svg element, path, and d attributes.",
+      "technologies": ["JavaScript", "SVG"],
+      "links": {
+        "github": "https://lnkd.in/gwRdJcc4"
+      }
+    },
+    {
+      "title": "CSS Keyframes Animation Experiments",
+      "description": "Explored CSS keyframes — @keyframes rule, animation-fill-mode, from/to keywords, fading/sliding/bouncing effects combined with JavaScript.",
+      "technologies": ["CSS", "JavaScript"],
+      "links": {
+        "github": "https://lnkd.in/gZnywuwu"
+      }
+    },
+    {
+      "title": "CipherSchools Cybersecurity Capstone Project",
+      "description": "Capstone project demonstrating real-world cybersecurity solutions — secure coding, networking modules, threat vector simulation, and defense mechanisms.",
+      "technologies": ["Kali Linux", "Metasploit", "Network Security Tools"],
+      "links": {
+        "github": "https://lnkd.in/gybvhM44"
+      }
+    }
+  ],
+
+  "certifications": [
+    {
+      "issuer": "Skillsoft",
+      "title": "Computational Theory: Language Principle & Finite Automata Theory",
+      "issued": "Aug 2025",
+      "credential_id": "159152128"
+    },
+    {
+      "issuer": "University of Colorado System",
+      "title": "TCP/IP and Advanced Topics",
+      "issued": "Dec 2024",
+      "credential_id": "3IC2GE78O6MP"
+    },
+    {
+      "issuer": "University of Colorado System",
+      "title": "Packet Switching Networks and Algorithms",
+      "issued": "Nov 2024",
+      "credential_id": "QVVAHQLC019P"
+    },
+    {
+      "issuer": "University of Colorado System",
+      "title": "Peer-to-Peer Protocols and Local Area Networks",
+      "issued": "Oct 2024",
+      "credential_id": "X21LRIVK0QCO"
+    },
+    {
+      "issuer": "University of Colorado System",
+      "title": "Fundamentals of Network Communication",
+      "issued": "Sep 2024",
+      "credential_id": "WJWSLOLZWLYY"
+    },
+    {
+      "issuer": "Google (via Coursera)",
+      "title": "The Bits and Bytes of Computer Networking",
+      "issued": "Sep 2024",
+      "expires": "Sep 2034",
+      "credential_id": "Z8T4AXN3Q3VD",
+      "skills": ["Computer Networking", "Network Architecture", "Critical Thinking", "Computer Architecture", "Network Security", "Human Computer Interaction", "Cloud Computing"]
+    },
+    {
+      "issuer": "CipherSchools",
+      "title": "Cybersecurity Certification & Project Completion",
+      "issued": "2025",
+      "skills_gained": [
+        "Ethical Hacking & Initial Reconnaissance",
+        "Cryptography & Digital Signatures",
+        "Network Security (Firewall, IDS, VPN)",
+        "Web Application Security (OWASP Top 10)",
+        "Identity & Access Management (RBAC)",
+        "Vulnerability Assessment (Metasploit)",
+        "SQL Injection, DoS, Session Hijacking Simulations"
+      ]
+    },
+    {
+      "issuer": "LinkedIn Learning",
+      "title": "Interpersonal Communication",
+      "issued": "2025"
+    },
+    {
+      "issuer": "RISC (LPU)",
+      "title": "RC Xtreme 3.0 — 15hr Workshop on RC Making",
+      "issued": "2024",
+      "description": "Arduino-based remote-controlled systems, practical engineering, robotics."
+    },
+    {
+      "issuer": "freeCodeCamp",
+      "title": "Responsive Web Design",
+      "issued": "Dec 2023"
+    }
+  ],
+
+  "hackathons_and_events": [
+    {
+      "name": "BinaryBlitz Web Hackathon",
+      "result": "Certificate of Achievement",
+      "description": "Web development and design hackathon focused on innovation and teamwork.",
+      "links": {
+        "github": "https://lnkd.in/gW3NcP8a"
+      }
+    },
+    {
+      "name": "React Summit 2025",
+      "type": "Conference (Remote)",
+      "description": "Attended one of the biggest React.js conferences remotely."
+    }
+  ],
+
+  "volunteering": [
+    {
+      "activity": "Blood Donation Camp",
+      "organization": "Punjab State Blood Transfusion Council & NIFAA",
+      "location": "LPU Campus",
+      "description": "Donated blood as part of LPU community's blood donation initiative."
+    }
+  ],
+
+  "learning_journey": {
+    "platforms": ["freeCodeCamp", "LinkedIn Learning", "Coursera"],
+    "coding_challenge": "Completed a 21+ day daily coding challenge documented on LinkedIn",
+    "topics_covered_chronologically": [
+      "HTML basics (ul, ol, a, img tags)",
+      "CSS box model, HTML tables",
+      "JavaScript introduction",
+      "JS functions & anonymous functions",
+      "JS try-catch error handling",
+      "Semantic & non-semantic HTML elements with CSS",
+      "HTML Cat Photo App",
+      "CSS Flexbox & transform property in JS",
+      "CSS Grid",
+      "CSS Grid Areas, JS Execution Context & Scope Chain",
+      "CSS Color properties (keywords, hex, rgb, hsl)",
+      "CSS Markers with shadow properties, Git commands",
+      "Role Playing Game — JS fundamentals",
+      "Calorie Counter — form validation, regex, template literals",
+      "Data Formatter — SVG graphics",
+      "CSS Keyframes animations",
+      "E-Waste Management platform",
+      "Raspberry Pi 5 hardware & accessories setup",
+      "Football team card display — ES6+ JS",
+      "B.Tech AI/ML curriculum webpage",
+      "ESP32 IoT LED Wi-Fi control projects"
+    ]
+  },
+
+  "goals": {
+    "ai_recommendations": [
+      "Expand portfolio with advanced ML projects integrating TensorFlow/OpenCV and cloud services like AWS/Google Cloud for end-to-end deployment.",
+      "Contribute to open-source GitHub repos in React.js or Flask to gain collaboration experience and network.",
+      "Boost competitive programming on LeetCode/Codeforces to improve rankings and problem-solving for full-stack roles."
+    ],
+    "self_assigned_tasks": [
+      "Complete and showcase at least two new GitHub projects with cloud integration and real-time features.",
+      "Achieve one new certification in cloud or DevOps, enhancing existing AWS/Google Cloud credentials.",
+      "Participate in three coding contests, targeting top 1000 global position in at least one."
+    ]
+  }
+}
