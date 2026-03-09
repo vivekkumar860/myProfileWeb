@@ -200,7 +200,7 @@ window.addEventListener('scroll', updateActiveNavLink);
 // EmailJS configuration for contact form functionality
 // IMPORTANT: Keep these credentials secure and don't commit to public repos!
 const EMAILJS_PUBLIC_KEY = 'IAVjyo3oGet_ZQ8DP';   // EmailJS public key
-const EMAILJS_SERVICE_ID = 'service_ckdivdn';     // EmailJS service ID
+const EMAILJS_SERVICE_ID = 'service_g6jiupf';     // EmailJS service ID
 const EMAILJS_TEMPLATE_ID = 'template_2jgjgai';   // EmailJS template ID
 
 function showFormStatus(message, type) {
