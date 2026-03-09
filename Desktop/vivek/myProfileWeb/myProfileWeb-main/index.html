@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio of Vivek Kumar - AI & ML Engineer, Full Stack Developer, and Cybersecurity Enthusiast. View projects, skills, certificates, and achievements.">
+    <meta name="keywords" content="Vivek Kumar, portfolio, AI, ML, full stack developer, Python, React, cybersecurity, LPU">
+    <meta name="author" content="Vivek Kumar">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Vivek Kumar - Personal Portfolio">
+    <meta property="og:description" content="AI & ML Engineer | Full Stack Developer | Cybersecurity Enthusiast">
+    <meta property="og:type" content="website">
+
+    <title>Vivek Kumar - Personal Portfolio</title>
+
+    <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="games.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Vivek Kumar</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#games" class="nav-link">Games</a></li>
+                <li><a href="#certificates" class="nav-link">Certificates</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Vivek Kumar</span></h1>
+                <p class="hero-subtitle">
+                    I'm a <span class="typed-text" id="typed-text"></span><span class="cursor">|</span>
+                </p>
+                <p class="hero-description">
+                    Passionate about building intelligent systems and real-time applications using
+                    Python, React.js, TensorFlow, and cloud platforms. Currently pursuing B.Tech in
+                    AI &amp; ML at Lovely Professional University.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="https://docs.google.com/document/d/1-QmsGqqM-xKAvgO5M3duLxyRRbKnYr-VQJcZckF1I4k/export?format=pdf" class="btn btn-resume" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Resume
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-image">
+                    <img src="vivek.webp" alt="Vivek Kumar" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>Career Objective:</strong> To secure a challenging role as a Full Stack Developer where I can utilize my skills in Python, React.js, cloud computing, and ML frameworks to contribute to impactful projects and grow professionally.
+                    </p>
+                    <p>
+                        I am a B.Tech student in Artificial Intelligence &amp; Machine Learning at
+                        Lovely Professional University (CGPA: 8.0), with hands-on experience in
+                        Python, React.js, cloud computing (AWS &amp; Google Cloud), and ML frameworks
+                        like TensorFlow and OpenCV. I love building real-time applications and
+                        predictive systems that solve real-world problems.
+                    </p>
+                    <p>
+                        Beyond coding, I've explored cybersecurity (Ethical Hacking, Kali Linux, OWASP Top 10),
+                        IoT hardware projects with ESP32 and Raspberry Pi, and I'm currently interning as a
+                        Talent Acquisition Coordinator at Placify.ai. I'm also a member of the Coding Club and
+                        Anime Club at LPU. I'm always learning — from a 21+ day daily coding challenge to
+                        attending React Summit 2025 remotely.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>14+</h3>
+                            <p>Projects Built</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10+</h3>
+                            <p>Certifications</p>
+                        </div>
+                        <div class="stat">
+                            <h3>8.0</h3>
+                            <p>CGPA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="vivek.webp" alt="About Vivek Kumar" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>B.Tech — CSE (AI &amp; ML)</h3>
+                        <div class="education-meta">
+                            <span><i class="fas fa-university"></i> Lovely Professional University, Jalandhar, Punjab</span>
+                            <span><i class="fas fa-calendar-alt"></i> Aug 2023 – Oct 2027</span>
+                            <span><i class="fas fa-star"></i> CGPA: 8.0</span>
+                        </div>
+                        <div class="education-details">
+                            <p><strong>Relevant Coursework:</strong></p>
+                            <div class="coursework-tags">
+                                <span>DSA</span>
+                                <span>Operating Systems</span>
+                                <span>DBMS</span>
+                                <span>Artificial Intelligence</span>
+                                <span>Computer Networks</span>
+                                <span>Software Engineering</span>
+                            </div>
+                            <p><strong>Activities:</strong> Coding Club, Anime Club</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>12th Grade — RPM Academy, Gorakhpur</h3>
+                        <div class="education-meta">
+                            <span><i class="fas fa-percentage"></i> 89.5%</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2022</span>
+                        </div>
+                        <div class="education-details">
+                            <p>Physics, Chemistry, Mathematics, Computer Science</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>10th Grade — RPM Academy, Gorakhpur</h3>
+                        <div class="education-meta">
+                            <span><i class="fas fa-percentage"></i> 92% (School Topper)</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2020</span>
+                        </div>
+                        <div class="education-details">
+                            <p>1st Rank in Mathematics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java / JDBC</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>C / C++</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-flask"></i>
+                            <span>Flask</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Graphic Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI / ML & Data</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-brain"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-eye"></i>
+                            <span>OpenCV</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-calculator"></i>
+                            <span>NumPy</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Seaborn</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-id-badge"></i>
+                            <span>face_recognition</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-aws"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-google"></i>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-dharmachakra"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Cybersecurity & Networking</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-user-secret"></i>
+                            <span>Ethical Hacking</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-linux"></i>
+                            <span>Kali Linux</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>TCP/IP</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>OWASP Top 10</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-bug"></i>
+                            <span>Metasploit</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Network Security</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Network Architecture</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>CS Fundamentals</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-table"></i>
+                            <span>DBMS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server"></i>
+                            <span>Operating Systems</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-diagram-project"></i>
+                            <span>SDLC</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-gears"></i>
+                            <span>Software Engineering</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-memory"></i>
+                            <span>Computer Architecture</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>IoT & Hardware</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-microchip"></i>
+                            <span>Raspberry Pi 5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-microchip"></i>
+                            <span>ESP32</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-microchip"></i>
+                            <span>Arduino</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">
+                        <i class="fas fa-face-smile"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-Time Face Recognition Attendance</h3>
+                        <p>Real-time face detection system using webcam, identifies faces instantly with computer vision, marks attendance automatically with dynamic face registration.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>OpenCV</span>
+                            <span>React.js</span>
+                            <span>Firebase</span>
+                            <span>Node.js</span>
+                            <span>face_recognition</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://lnkd.in/gy76uCK5" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #10B981, #047857);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Melbourne Property Price Predictor</h3>
+                        <p>Real-time property price predictor for Melbourne City with an accessible, interactive web interface for instant price estimation.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>API</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://tinyurl.com/passCracker1" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cybersecurity Capstone Project</h3>
+                        <p>Real-world cybersecurity solutions — ethical hacking, firewall setup, intrusion detection, cryptography, web application security (OWASP), and secure coding practices.</p>
+                        <div class="project-tech">
+                            <span>Kali Linux</span>
+                            <span>Metasploit</span>
+                            <span>Network Security</span>
+                            <span>Cryptography</span>
+                            <span>OWASP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://lnkd.in/gybvhM44" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #F59E0B, #D97706);">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Wi-Fi Controlled LEDs with ESP32</h3>
+                        <p>IoT projects using ESP32 — Wi-Fi controlled single LED and advanced multi-LED system with custom blink intervals via web interface.</p>
+                        <div class="project-tech">
+                            <span>ESP32</span>
+                            <span>Arduino</span>
+                            <span>IoT</span>
+                            <span>Web Interface</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #EC4899, #BE185D);">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Waste Management Web Platform</h3>
+                        <p>Web platform for e-waste awareness using semantic HTML5, CSS3, and JavaScript to educate users on responsible recycling.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://lnkd.in/gS7__dyn" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #06B6D4, #0E7490);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Browser-Based RPG</h3>
+                        <p>Browser-based RPG with Store, Cave, and Fight Dragon actions, XP/Health/Gold bars using core JavaScript fundamentals.</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://lnkd.in/gWNS4NUh" class="btn btn-small btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #EF4444, #B91C1C);">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Deepfake Video Detection</h3>
+                        <p>AI-powered deepfake video detection system using XceptionNet with GradCAM explainability, featuring a Flask web app for real-time video analysis.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>Flask</span>
+                            <span>XceptionNet</span>
+                            <span>GradCAM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #059669, #047857);">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Football Card Display</h3>
+                        <p>Interactive football player card display with dynamic styling and responsive design.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #F97316, #C2410C);">
+                        <i class="fas fa-fire-flame-curved"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Calorie Counter</h3>
+                        <p>Web-based calorie counter app for tracking daily nutrition intake with an interactive interface.</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--gradient" style="background: linear-gradient(135deg, #A855F7, #7C3AED);">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>CSS Keyframes Experiments</h3>
+                        <p>Collection of CSS keyframe animation experiments exploring transitions, transforms, and creative motion design.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS (Keyframes)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2 class="section-title">Play Some Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <span class="game-card-icon">&#x1F40D;</span>
+                    <h3>Snake</h3>
+                    <p>Classic arcade — eat, grow, survive!</p>
+                    <button class="game-play-btn" data-game="snake" aria-label="Play Snake game - Classic arcade game where you control a snake to eat food and grow">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">&#x274C;</span>
+                    <h3>Tic-Tac-Toe</h3>
+                    <p>Challenge the AI in this classic.</p>
+                    <button class="game-play-btn" data-game="tictactoe" aria-label="Play Tic-Tac-Toe game - Classic strategy game against AI opponent">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">&#x1F0CF;</span>
+                    <h3>Memory Match</h3>
+                    <p>Flip cards and find all pairs.</p>
+                    <button class="game-play-btn" data-game="memory" aria-label="Play Memory Match game - Card matching game to test your memory">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">&#x1F522;</span>
+                    <h3>2048</h3>
+                    <p>Merge tiles to reach 2048!</p>
+                    <button class="game-play-btn" data-game="game2048" aria-label="Play 2048 game - Number puzzle game where you merge tiles to reach 2048">Play</button>
+                </div>
+                <div class="game-card">
+                    <span class="game-card-icon">&#x1F528;</span>
+                    <h3>Whack-a-Mole</h3>
+                    <p>Whack moles before time runs out!</p>
+                    <button class="game-play-btn" data-game="whackamole" aria-label="Play Whack-a-Mole game - Fast-paced reaction game where you hit moles as they appear">Play</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modals -->
+
+    <!-- Snake Modal -->
+    <div class="game-modal" id="snake-modal" role="dialog" aria-modal="true">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Snake</h3>
+            <div class="game-info-bar">
+                <span>Score: <strong id="snake-score">0</strong></span>
+            </div>
+            <canvas id="snake-canvas" width="400" height="400"></canvas>
+            <button class="game-restart-btn" id="snake-restart">Restart</button>
+            <p style="text-align:center;margin-top:0.75rem;font-size:0.85rem;color:#888;">Use arrow keys to move</p>
+        </div>
+    </div>
+
+    <!-- Tic-Tac-Toe Modal -->
+    <div class="game-modal" id="tictactoe-modal" role="dialog" aria-modal="true">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Tic-Tac-Toe</h3>
+            <div class="ttt-status" id="ttt-status">Your turn (X)</div>
+            <div class="ttt-board">
+                <div class="ttt-cell" data-index="0"></div>
+                <div class="ttt-cell" data-index="1"></div>
+                <div class="ttt-cell" data-index="2"></div>
+                <div class="ttt-cell" data-index="3"></div>
+                <div class="ttt-cell" data-index="4"></div>
+                <div class="ttt-cell" data-index="5"></div>
+                <div class="ttt-cell" data-index="6"></div>
+                <div class="ttt-cell" data-index="7"></div>
+                <div class="ttt-cell" data-index="8"></div>
+            </div>
+            <div class="game-info-bar">
+                <span>Wins: <strong id="ttt-wins">0</strong></span>
+                <span>Losses: <strong id="ttt-losses">0</strong></span>
+                <span>Draws: <strong id="ttt-draws">0</strong></span>
+            </div>
+            <button class="game-restart-btn" id="ttt-restart">New Game</button>
+        </div>
+    </div>
+
+    <!-- Memory Match Modal -->
+    <div class="game-modal" id="memory-modal" role="dialog" aria-modal="true">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Memory Match</h3>
+            <div class="game-info-bar">
+                <span>Moves: <strong id="memory-moves">0</strong></span>
+                <span>Time: <strong id="memory-timer">0:00</strong></span>
+            </div>
+            <div class="memory-board" id="memory-board"></div>
+            <button class="game-restart-btn" id="memory-restart">Restart</button>
+        </div>
+    </div>
+
+    <!-- 2048 Modal -->
+    <div class="game-modal" id="game2048-modal" role="dialog" aria-modal="true">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>2048</h3>
+            <div class="game-info-bar">
+                <span>Score: <strong id="game2048-score">0</strong></span>
+                <span>Best: <strong id="game2048-best">0</strong></span>
+            </div>
+            <div class="game-2048-board" id="game2048-board"></div>
+            <button class="game-restart-btn" id="game2048-restart">Restart</button>
+            <p style="text-align:center;margin-top:0.75rem;font-size:0.85rem;color:#888;">Use arrow keys or swipe to play</p>
+        </div>
+    </div>
+
+    <!-- Whack-a-Mole Modal -->
+    <div class="game-modal" id="whackamole-modal" role="dialog" aria-modal="true">
+        <div class="game-modal-content">
+            <button class="game-modal-close">&times;</button>
+            <h3>Whack-a-Mole</h3>
+            <div class="game-info-bar">
+                <span>Score: <strong id="wam-score">0</strong></span>
+                <span>Time: <strong id="wam-timer">30</strong>s</span>
+            </div>
+            <div class="wam-board">
+                <div class="wam-hole" data-index="0"></div>
+                <div class="wam-hole" data-index="1"></div>
+                <div class="wam-hole" data-index="2"></div>
+                <div class="wam-hole" data-index="3"></div>
+                <div class="wam-hole" data-index="4"></div>
+                <div class="wam-hole" data-index="5"></div>
+                <div class="wam-hole" data-index="6"></div>
+                <div class="wam-hole" data-index="7"></div>
+                <div class="wam-hole" data-index="8"></div>
+            </div>
+            <button class="wam-start-btn" id="wam-start">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <h2 class="section-title">Certificates & Training</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Cybersecurity Certification</h3>
+                        <p>CipherSchools</p>
+                        <span class="certificate-date">2025</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Computational Theory: Finite Automata</h3>
+                        <p>Skillsoft</p>
+                        <span class="certificate-date">Aug 2025</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>TCP/IP and Advanced Topics</h3>
+                        <p>University of Colorado System</p>
+                        <span class="certificate-date">Dec 2024</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Packet Switching Networks & Algorithms</h3>
+                        <p>University of Colorado System</p>
+                        <span class="certificate-date">Nov 2024</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Peer-to-Peer Protocols & LANs</h3>
+                        <p>University of Colorado System</p>
+                        <span class="certificate-date">Oct 2024</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Fundamentals of Network Communication</h3>
+                        <p>University of Colorado System</p>
+                        <span class="certificate-date">Sep 2024</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Bits and Bytes of Computer Networking</h3>
+                        <p>Google (via Coursera)</p>
+                        <span class="certificate-date">Sep 2024</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Interpersonal Communication</h3>
+                        <p>LinkedIn Learning</p>
+                        <span class="certificate-date">2025</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>RC Xtreme 3.0 — RC Making Workshop</h3>
+                        <p>RISC (LPU)</p>
+                        <span class="certificate-date">2024</span>
+                    </div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Responsive Web Design</h3>
+                        <p>freeCodeCamp</p>
+                        <span class="certificate-date">Dec 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements & Recognition</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>BinaryBlitz Web Hackathon</h3>
+                    <p>Certificate of Achievement in a web development and design hackathon focused on innovation and teamwork.</p>
+                    <span class="achievement-year">2024</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>React Summit 2025</h3>
+                    <p>Attended one of the biggest React.js conferences remotely, staying current with cutting-edge frontend technologies.</p>
+                    <span class="achievement-year">2025</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>School Topper — 10th Grade</h3>
+                    <p>Scored 92% in 10th grade at RPM Academy, Gorakhpur, with 1st Rank in Mathematics.</p>
+                    <span class="achievement-year">2020</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>12th Grade — 89.5%</h3>
+                    <p>Senior Secondary from RPM Academy with Physics, Chemistry, Mathematics, and Computer Science.</p>
+                    <span class="achievement-year">2022</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Intern at Placify.ai</h3>
+                    <p>Talent Acquisition Coordinator — IT recruiting, active sourcing, and talent acquisition using AI-powered recruitment tools.</p>
+                    <span class="achievement-year">2024</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Blood Donation — LPU</h3>
+                    <p>Donated blood at the Punjab State Blood Transfusion Council &amp; National Integrated Forum of Artists and Activists (NIFAA) camp organized on LPU Campus.</p>
+                    <span class="achievement-year">2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in new opportunities, collaborations, and exciting projects. Feel free to reach out!</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>vivekkumarorigional@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 8604227399</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Phagwara, Punjab, India</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/vivekkumar860" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/vivekkumar021" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="from_name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="from_email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <p id="form-status" class="form-status"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Vivek Kumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+    <script src="games.js"></script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+/* ============================================================
+   GAMES SECTION STYLES
+   ============================================================ */
+
+/* Games Section — background handled by alternating sections in styles.css */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.game-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.game-card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.game-card h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.game-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+.game-play-btn {
+    display: inline-block;
+    padding: 10px 28px;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.game-play-btn:hover {
+    background: #3730A3;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   GAME MODAL OVERLAY — Light theme to match site palette
+   ============================================================ */
+.game-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.game-modal.active {
+    display: flex;
+}
+
+.game-modal-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    max-width: 520px;
+    width: 95%;
+    max-height: 95vh;
+    overflow-y: auto;
+    color: #333;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    /* Prevent unwanted zoom on touch devices */
+    touch-action: manipulation;
+}
+
+.game-modal-content h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4F46E5;
+}
+
+.game-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.game-modal-close:hover {
+    color: #333;
+}
+
+.game-info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.game-info-bar span {
+    background: #f1f5f9;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.game-restart-btn {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 10px 28px;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.game-restart-btn:hover {
+    background: #3730A3;
+}
+
+/* ============================================================
+   SNAKE GAME — canvas stays dark (self-contained)
+   ============================================================ */
+#snake-canvas {
+    display: block;
+    margin: 0 auto;
+    background: #0f0f23;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    max-width: 100%;
+    touch-action: none; /* Prevent any touch gestures on canvas */
+}
+
+/* ============================================================
+   TIC-TAC-TOE — light theme
+   ============================================================ */
+.ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 300px;
+    margin: 0 auto 1rem;
+}
+
+.ttt-cell {
+    aspect-ratio: 1;
+    background: #f1f5f9;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    color: #333;
+    user-select: none;
+}
+
+.ttt-cell:hover {
+    background: #e0e7ff;
+    transform: scale(1.05);
+}
+
+.ttt-cell.x {
+    color: #4F46E5;
+}
+
+.ttt-cell.o {
+    color: #EC4899;
+}
+
+.ttt-cell.winner {
+    background: rgba(252, 211, 77, 0.3);
+    border-color: #F59E0B;
+}
+
+.ttt-status {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    min-height: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ============================================================
+   MEMORY CARD GAME — light theme
+   ============================================================ */
+.memory-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 360px;
+    margin: 0 auto 1rem;
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    perspective: 600px;
+    cursor: pointer;
+}
+
+.memory-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.memory-card-front {
+    background: linear-gradient(135deg, #4F46E5, #7c3aed);
+    color: white;
+    font-size: 1.5rem;
+}
+
+.memory-card-back {
+    background: #f1f5f9;
+    border: 2px solid #e5e7eb;
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched .memory-card-back {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+}
+
+/* ============================================================
+   2048 GAME — light theme
+   ============================================================ */
+.game-2048-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 340px;
+    margin: 0 auto 1rem;
+    background: #e5e7eb;
+    padding: 10px;
+    border-radius: 12px;
+    touch-action: none; /* Allow swipe gestures for game control */
+}
+
+.tile-2048 {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: #f1f5f9;
+    color: #333;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.tile-2048[data-value="2"] { background: #eee4da; color: #776e65; }
+.tile-2048[data-value="4"] { background: #ede0c8; color: #776e65; }
+.tile-2048[data-value="8"] { background: #f2b179; color: #f9f6f2; }
+.tile-2048[data-value="16"] { background: #f59563; color: #f9f6f2; }
+.tile-2048[data-value="32"] { background: #f67c5f; color: #f9f6f2; }
+.tile-2048[data-value="64"] { background: #f65e3b; color: #f9f6f2; }
+.tile-2048[data-value="128"] { background: #edcf72; color: #f9f6f2; font-size: 1.3rem; }
+.tile-2048[data-value="256"] { background: #edcc61; color: #f9f6f2; font-size: 1.3rem; }
+.tile-2048[data-value="512"] { background: #edc850; color: #f9f6f2; font-size: 1.3rem; }
+.tile-2048[data-value="1024"] { background: #edc53f; color: #f9f6f2; font-size: 1.1rem; }
+.tile-2048[data-value="2048"] { background: #edc22e; color: #f9f6f2; font-size: 1.1rem; }
+
+.tile-2048.pop {
+    animation: tilePop 0.2s ease;
+}
+
+@keyframes tilePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ============================================================
+   WHACK-A-MOLE — light theme
+   ============================================================ */
+.wam-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 320px;
+    margin: 0 auto 1rem;
+}
+
+.wam-hole {
+    aspect-ratio: 1;
+    background: #f1f5f9;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.wam-hole:hover {
+    background: #e0e7ff;
+}
+
+.wam-hole.mole-up {
+    background: rgba(139, 69, 19, 0.15);
+    border-color: #a0522d;
+    animation: moleShake 0.3s ease;
+}
+
+.wam-hole.whacked {
+    background: rgba(252, 211, 77, 0.3);
+    transform: scale(0.9);
+}
+
+@keyframes moleShake {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-4px); }
+    75% { transform: translateY(2px); }
+}
+
+.wam-start-btn {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 10px 28px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.wam-start-btn:hover {
+    background: #059669;
+}
+
+/* ============================================================
+   GAME OVER / WIN OVERLAY — light with blur
+   ============================================================ */
+.game-overlay-msg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.game-overlay-msg.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-overlay-msg h4 {
+    font-size: 1.8rem;
+    color: #4F46E5;
+    margin-bottom: 0.5rem;
+}
+
+.game-overlay-msg p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+    }
+
+    .game-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .game-card-icon {
+        font-size: 2.5rem;
+    }
+
+    .game-modal-content {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+        height: 100%;
+    }
+
+    #snake-canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .tile-2048 {
+        font-size: 1.2rem;
+    }
+
+    .ttt-cell {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .games-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .memory-board {
+        gap: 6px;
+    }
+
+    .memory-card-front,
+    .memory-card-back {
+        font-size: 1.5rem;
+    }
+
+    .game-2048-board {
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .tile-2048 {
+        font-size: 1rem;
+    }
+
+    .tile-2048[data-value="128"],
+    .tile-2048[data-value="256"],
+    .tile-2048[data-value="512"] {
+        font-size: 0.9rem;
+    }
+
+    .tile-2048[data-value="1024"],
+    .tile-2048[data-value="2048"] {
+        font-size: 0.8rem;
+    }
+}
