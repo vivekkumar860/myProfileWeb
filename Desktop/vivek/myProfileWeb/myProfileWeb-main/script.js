@@ -249,13 +249,23 @@ if (contactForm) {
         }
 
         emailjs.init(EMAILJS_PUBLIC_KEY);
+        console.log('Sending with:', {
+            service: EMAILJS_SERVICE_ID,
+            template: EMAILJS_TEMPLATE_ID,
+            publicKey: EMAILJS_PUBLIC_KEY
+        });
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
-            .then(function() {
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
                 showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
                 contactForm.reset();
             })
             .catch(function(err) {
-                console.error('EmailJS error:', err);
+                console.error('EmailJS detailed error:', {
+                    status: err.status,
+                    text: err.text,
+                    error: err
+                });
                 showFormStatus('Failed to send. Please email me directly at vivekkumarorigional@gmail.com', 'error');
             })
             .finally(function() {
