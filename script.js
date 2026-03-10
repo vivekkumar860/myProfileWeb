@@ -188,9 +188,9 @@ window.addEventListener('scroll', updateActiveNavLink);
 // To enable real email sending:
 // 1. Create a free account at https://www.emailjs.com/
 // 2. Replace the three values below with your own credentials
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';   // <-- REPLACE with your EmailJS public key
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';   // <-- REPLACE with your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // <-- REPLACE with your EmailJS template ID
+const EMAILJS_PUBLIC_KEY = 'IAVjyo3oGet_ZQ8DP';   // <-- REPLACE with your EmailJS public key
+const EMAILJS_SERVICE_ID = 'service_g6jiupf';   // <-- REPLACE with your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = 'template_er2i37j'; // <-- REPLACE with your EmailJS template ID
 
 function showFormStatus(message, type) {
     const statusEl = document.getElementById('form-status');
