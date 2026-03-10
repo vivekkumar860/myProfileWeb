@@ -104,8 +104,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navbar = document.querySelector('.navbar');
 const backToTopBtn = document.getElementById('backToTop');
 
-window.addEventListener('scroll', () => {
-    // Navbar effect
+// Initialize navbar styles
+if (navbar) {
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
@@ -113,19 +113,36 @@ window.addEventListener('scroll', () => {
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         navbar.style.boxShadow = 'none';
     }
+}
+
+window.addEventListener('scroll', () => {
+    // Navbar effect
+    if (navbar) {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    }
 
     // Back to top button
-    if (window.scrollY > 500) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
+    if (backToTopBtn) {
+        if (window.scrollY > 500) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
     }
 });
 
 // Back to Top click
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 // Intersection Observer for fade-in animations
 const observer = new IntersectionObserver((entries) => {
@@ -203,6 +220,20 @@ const EMAILJS_PUBLIC_KEY = 'IAVjyo3oGet_ZQ8DP';   // EmailJS public key
 const EMAILJS_SERVICE_ID = 'service_g6jiupf';     // EmailJS service ID
 const EMAILJS_TEMPLATE_ID = 'template_er2i37j';   // EmailJS template ID
 
+// Initialize EmailJS when the page loads
+window.addEventListener('DOMContentLoaded', () => {
+    if (typeof emailjs !== 'undefined') {
+        try {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            console.log('EmailJS initialized successfully');
+        } catch(e) {
+            console.error('Failed to initialize EmailJS:', e);
+        }
+    } else {
+        console.warn('EmailJS library not loaded');
+    }
+});
+
 function showFormStatus(message, type) {
     const statusEl = document.getElementById('form-status');
     if (!statusEl) return;
@@ -248,11 +279,9 @@ if (contactForm) {
             return;
         }
 
-        emailjs.init(EMAILJS_PUBLIC_KEY);
-        console.log('Sending with:', {
+        console.log('Sending email with:', {
             service: EMAILJS_SERVICE_ID,
-            template: EMAILJS_TEMPLATE_ID,
-            publicKey: EMAILJS_PUBLIC_KEY
+            template: EMAILJS_TEMPLATE_ID
         });
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
             .then(function(response) {
