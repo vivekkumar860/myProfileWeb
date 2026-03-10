@@ -212,52 +212,9 @@ function updateActiveNavLink() {
 window.addEventListener('scroll', updateActiveNavLink);
 
 // ============================================================
-// EmailJS Contact Form
+// Contact Form with Netlify Functions
 // ============================================================
-// EmailJS configuration for contact form functionality
-// IMPORTANT: Keep these credentials secure and don't commit to public repos!
-const EMAILJS_PUBLIC_KEY = 'IAVjyo3oGet_ZQ8DP';   // EmailJS public key
-const EMAILJS_SERVICE_ID = 'service_g6jiupf';     // EmailJS service ID
-const EMAILJS_TEMPLATE_ID = 'template_er2i37j';   // EmailJS template ID
-
-// Initialize EmailJS when the page loads
-let emailjsInitialized = false;
-
-function initializeEmailJS() {
-    if (emailjsInitialized) return;
-
-    if (typeof emailjs !== 'undefined') {
-        try {
-            emailjs.init(EMAILJS_PUBLIC_KEY);
-            emailjsInitialized = true;
-            console.log('EmailJS initialized successfully');
-            return true;
-        } catch(e) {
-            console.error('Failed to initialize EmailJS:', e);
-            return false;
-        }
-    } else {
-        console.warn('EmailJS library not loaded yet');
-        return false;
-    }
-}
-
-// Try to initialize on DOMContentLoaded
-window.addEventListener('DOMContentLoaded', initializeEmailJS);
-
-// Also try on window load as a fallback
-window.addEventListener('load', () => {
-    if (!emailjsInitialized) {
-        initializeEmailJS();
-    }
-});
-
-// Retry initialization after a delay if needed
-setTimeout(() => {
-    if (!emailjsInitialized) {
-        initializeEmailJS();
-    }
-}, 2000);
+// Using Netlify Functions with Nodemailer for reliable email delivery
 
 function showFormStatus(message, type) {
     const statusEl = document.getElementById('form-status');
@@ -296,49 +253,45 @@ if (contactForm) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        // Ensure EmailJS is initialized
-        if (!emailjsInitialized) {
-            initializeEmailJS();
-        }
+        // Prepare data for Netlify function
+        const formData = {
+            from_name: name,
+            from_email: email,
+            subject: subject,
+            message: message
+        };
 
-        // Check if EmailJS SDK loaded
-        if (typeof emailjs === 'undefined' || !emailjsInitialized) {
-            showFormStatus('Email service is unavailable. Please email me directly at vivekkumarorigional@gmail.com', 'error');
+        console.log('Sending email via Netlify function...');
+
+        // Send request to Netlify function
+        fetch('/.netlify/functions/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.error || 'Failed to send email');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Email sent successfully:', data);
+            showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+            contactForm.reset();
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            console.error('EmailJS not available:', {
-                defined: typeof emailjs !== 'undefined',
-                initialized: emailjsInitialized
-            });
-            return;
-        }
-
-        console.log('Sending email with:', {
-            service: EMAILJS_SERVICE_ID,
-            template: EMAILJS_TEMPLATE_ID,
-            initialized: emailjsInitialized
+        })
+        .catch(error => {
+            console.error('Error sending email:', error);
+            showFormStatus(error.message || 'Failed to send. Please email me directly at vivekkumarorigional@gmail.com', 'error');
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         });
-        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
-                contactForm.reset();
-            })
-            .catch(function(err) {
-                console.error('EmailJS detailed error:', {
-                    status: err.status,
-                    text: err.text,
-                    error: err,
-                    publicKey: EMAILJS_PUBLIC_KEY,
-                    serviceId: EMAILJS_SERVICE_ID,
-                    templateId: EMAILJS_TEMPLATE_ID
-                });
-                showFormStatus('Failed to send. Please email me directly at vivekkumarorigional@gmail.com', 'error');
-            })
-            .finally(function() {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
     });
 }
 
@@ -352,8 +305,4 @@ window.addEventListener('load', () => {
         }, 500);
     }
 
-    // Final attempt to initialize EmailJS if still not initialized
-    if (!emailjsInitialized) {
-        setTimeout(initializeEmailJS, 1000);
-    }
 });

@@ -931,23 +931,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS immediately when script loads
-        (function() {
-            // Wait for EmailJS to be available
-            function waitForEmailJS() {
-                if (typeof emailjs !== 'undefined') {
-                    console.log('EmailJS library detected, initializing...');
-                } else {
-                    console.warn('Waiting for EmailJS library...');
-                    setTimeout(waitForEmailJS, 100);
-                }
-            }
-            waitForEmailJS();
-        })();
-    </script>
+    <!-- Scripts -->
     <script src="script.js"></script>
     <script src="games.js"></script>
 </body>
