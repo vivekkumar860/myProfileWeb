@@ -221,18 +221,43 @@ const EMAILJS_SERVICE_ID = 'service_g6jiupf';     // EmailJS service ID
 const EMAILJS_TEMPLATE_ID = 'template_er2i37j';   // EmailJS template ID
 
 // Initialize EmailJS when the page loads
-window.addEventListener('DOMContentLoaded', () => {
+let emailjsInitialized = false;
+
+function initializeEmailJS() {
+    if (emailjsInitialized) return;
+
     if (typeof emailjs !== 'undefined') {
         try {
             emailjs.init(EMAILJS_PUBLIC_KEY);
+            emailjsInitialized = true;
             console.log('EmailJS initialized successfully');
+            return true;
         } catch(e) {
             console.error('Failed to initialize EmailJS:', e);
+            return false;
         }
     } else {
-        console.warn('EmailJS library not loaded');
+        console.warn('EmailJS library not loaded yet');
+        return false;
+    }
+}
+
+// Try to initialize on DOMContentLoaded
+window.addEventListener('DOMContentLoaded', initializeEmailJS);
+
+// Also try on window load as a fallback
+window.addEventListener('load', () => {
+    if (!emailjsInitialized) {
+        initializeEmailJS();
     }
 });
+
+// Retry initialization after a delay if needed
+setTimeout(() => {
+    if (!emailjsInitialized) {
+        initializeEmailJS();
+    }
+}, 2000);
 
 function showFormStatus(message, type) {
     const statusEl = document.getElementById('form-status');
@@ -271,17 +296,27 @@ if (contactForm) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
+        // Ensure EmailJS is initialized
+        if (!emailjsInitialized) {
+            initializeEmailJS();
+        }
+
         // Check if EmailJS SDK loaded
-        if (typeof emailjs === 'undefined') {
+        if (typeof emailjs === 'undefined' || !emailjsInitialized) {
             showFormStatus('Email service is unavailable. Please email me directly at vivekkumarorigional@gmail.com', 'error');
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
+            console.error('EmailJS not available:', {
+                defined: typeof emailjs !== 'undefined',
+                initialized: emailjsInitialized
+            });
             return;
         }
 
         console.log('Sending email with:', {
             service: EMAILJS_SERVICE_ID,
-            template: EMAILJS_TEMPLATE_ID
+            template: EMAILJS_TEMPLATE_ID,
+            initialized: emailjsInitialized
         });
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
             .then(function(response) {
@@ -293,7 +328,10 @@ if (contactForm) {
                 console.error('EmailJS detailed error:', {
                     status: err.status,
                     text: err.text,
-                    error: err
+                    error: err,
+                    publicKey: EMAILJS_PUBLIC_KEY,
+                    serviceId: EMAILJS_SERVICE_ID,
+                    templateId: EMAILJS_TEMPLATE_ID
                 });
                 showFormStatus('Failed to send. Please email me directly at vivekkumarorigional@gmail.com', 'error');
             })
@@ -312,5 +350,10 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
+    }
+
+    // Final attempt to initialize EmailJS if still not initialized
+    if (!emailjsInitialized) {
+        setTimeout(initializeEmailJS, 1000);
     }
 });
